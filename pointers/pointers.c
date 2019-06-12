@@ -15,6 +15,18 @@
 */
 void string_copy(char *x, char *y)
 {
+    int count = 0;
+    while (*y != '\0')
+{
+    *x = *y;
+    y++;
+    x++;
+    printf("%s\n", y);
+    count ++;
+
+}
+
+*(x + count) = '\0';
 
 }
 
@@ -28,8 +40,17 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, char c)
 {
-
+    while (*str != '\0')
+{
+   if (*str == c) {
+       printf("%s\n", str);
+       return str;
+   }
+   str++;
 }
+return NULL;
+}
+
 
 /*
     Searches the input string `haystack` for the first instance of
@@ -41,7 +62,20 @@ char *find_char(char *str, char c)
 */
 char *find_string(char *haystack, char *needle)
 {
+    while(*haystack) {
+        char *begin = haystack;
+        char *inside = needle;
 
+        while (*haystack && *inside && *haystack == *inside) {
+            haystack++;
+            inside++;
+        }
+        if (!*inside) {
+            return begin;
+        }
+        haystack = begin + 1;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
