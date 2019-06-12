@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+// To compile and run: 
+
+// make
+// ./name-of-file
+
 /*
     Given a character array s (as a pointer), return the number of 
     characters in the string.
@@ -9,19 +15,31 @@
 */
 int string_length(char *s)
 {
-
+  int count = 0;
+  /*  *s is s[0], *(s+1) = s[1], and etc. Pointers refer to some value in memory. Arrays always end in \0. */
+  while (*(s + count) != '\0') 
+  {
+    count ++;
+  }
+  return count;
 }
 
-/*
-    Write a function that reverses the order of string s and outputs 
-    the reversed string to the input array rv. The rv array will have 
-    enough space for the reversed string. Don't forget to terminate 
-    the reversed string with a null character. Return the rv array.
-*/
+
 char *reverse_string(char *rv, char *s)
 {
+  int count = string_length(s);
+  int i = 0;
+  while (count >= 0) 
+  {
+    count--;
+    *(rv + i) = *(s + count);
+    i++;
+  }
 
+  *(rv + i) = '\0';
+  return rv;
 }
+
 
 #ifndef TESTING
 int main(void)
